@@ -1,0 +1,21 @@
+.app-header {
+	padding: 1em;
+	background-color: var(--clr1);
+
+	color: var(--clr1bg);
+}
+
+.app-header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-header nav button {
+    padding: .2em .5em;
+    margin-inline-start: auto;
+}
+
+.app-header h1 {
+    margin-inline: 0;
+}

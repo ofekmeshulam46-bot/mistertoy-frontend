@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 
 import { logout } from "../store/actions/user.js"
-import { TOGGLE_CART } from "../store/store.js"
 import { LoginSignup } from "./LoginSignup.jsx"
 
 export function AppHeader() {
@@ -20,9 +19,7 @@ export function AppHeader() {
         <NavLink to="/car">Cars</NavLink>
         <NavLink to="/about">About</NavLink>
 
-        <button onClick={() => dispatch({ type: TOGGLE_CART })}>
-          <span>🛒 Cart</span>
-        </button>
+     
       </nav>
       <h1>State Management with Redux</h1>
 

@@ -5,11 +5,9 @@ import { CarList } from '../cmps/CarList.jsx'
 import { carService } from '../services/car.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadCars, removeCar, saveCar } from '../store/actions/car.js'
-import { ADD_TO_CART } from '../store/store.js'
 
 export function CarIndex() {
 
-    const cart = useSelector(storeState => storeState.cart)
     const cars = useSelector(storeState => storeState.cars)
     const dispatch = useDispatch()
 
@@ -56,13 +54,7 @@ export function CarIndex() {
             })
     }
 
-    function onAddToCart(car) {
-        console.log(`Adding ${car.vendor} to Cart`)
-        
-        // TODO: use dispatch
-        dispatch({ type: ADD_TO_CART, car })
-        showSuccessMsg('Added to Cart')
-    }
+   
 
     return <section className="car-index">
         <header>
@@ -74,10 +66,8 @@ export function CarIndex() {
             <CarList 
                 cars={cars}
                 onRemoveCar={onRemoveCar}
-                onEditCar={onEditCar}
-                onAddToCart={onAddToCart}/>
+                onEditCar={onEditCar}/>
                 
-            <pre>{JSON.stringify(cart, null, 2)}</pre>
         </main>
     </section>
 }

@@ -1,0 +1,30 @@
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap:.5em;
+    
+    padding: 0;
+    list-style: none;
+}
+
+.car-list li {
+    position: relative;
+    padding: 0.5em;    
+    background-color: var(--clr2bg-light);
+}
+
+.car-list li::before {
+    content: "⛐";
+    position: absolute;
+    top: .15em;
+    right: .25em;
+
+    font-size: 2em;
+}
+
+.car-list li .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .3em .5em;
+}

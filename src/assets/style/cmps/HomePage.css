@@ -1,0 +1,17 @@
+.home-page > * {
+    grid-area: 1 / 1;
+}
+
+.home-page .counter {
+    display: flex;
+    justify-content: end;
+    gap: 1em;
+    
+    margin-block-start: 1em;
+}
+
+.home-page img {
+    display: block;
+    width: 40%;
+    place-self: center;
+}

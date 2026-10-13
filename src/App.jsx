@@ -7,7 +7,6 @@ import { store } from "./store/store.js"
 import { AppHeader } from "./cmps/AppHeader.jsx"
 import { AppFooter } from "./cmps/AppFooter.jsx"
 import { UserMsg } from "./cmps/UserMsg.jsx"
-import { ShoppingCart } from "./cmps/ShoppingCart.jsx"
 
 import { HomePage } from "./pages/HomePage.jsx"
 import { AboutUs } from "./pages/AboutUs.jsx"
@@ -26,7 +25,6 @@ export default function App() {
             </Routes>
           </main>
           <AppFooter />
-          <ShoppingCart />
           <UserMsg />
         </section>
       </Router>

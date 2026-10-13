@@ -1,0 +1,27 @@
+.login-signup {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: .5em;
+}
+
+.login-signup p {
+    margin: 0;
+}
+
+.login-signup form {
+    display: flex;
+    justify-content: end;
+    gap: .5em;
+
+    margin-block-start: 1em;
+}
+
+.login-signup-toggle {
+    display: flex;
+    justify-content: end;
+
+    margin-block-start: .5em;
+
+    font-size: .8em;
+}

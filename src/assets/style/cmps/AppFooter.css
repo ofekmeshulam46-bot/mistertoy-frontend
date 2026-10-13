@@ -1,0 +1,19 @@
+.app-footer {
+	padding: 1em 1em .5em;
+	background-color: var(--clr1);
+
+	color: var(--clr1bg);
+    font-size: .9em;
+}
+
+.app-footer p {
+    margin: 0;
+    text-align: start;
+}
+
+
+
+.app-footer .product-count {
+    margin-inline-start: auto;
+}
+

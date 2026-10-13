@@ -1,0 +1,19 @@
+#root {
+    height: 100vh;
+}
+
+.app {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    height: 100%;
+}
+
+.home-page {
+    display: grid;
+    height: 100%;
+}
+
+.app main .counter{
+    align-self: start;
+}
