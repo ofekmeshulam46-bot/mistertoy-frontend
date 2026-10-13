@@ -55,7 +55,6 @@ export function CarIndex() {
     }
 
    
-
     return <section className="car-index">
         <header>
             <h3>Cars</h3>
@@ -67,7 +66,6 @@ export function CarIndex() {
                 cars={cars}
                 onRemoveCar={onRemoveCar}
                 onEditCar={onEditCar}/>
-                
         </main>
     </section>
 }
