@@ -47,6 +47,7 @@ export const toyService = {
   save,
   remove,
   getEmptyToy,
+  getDefaultFilter,
 }
 
 function query() {
@@ -73,7 +74,7 @@ function save(toy) {
 
 function getEmptyToy() {
   return {
-    name: toyNames[utilService.getRandomIntInclusive(0, toyNames.length-1)],
+    name: toyNames[utilService.getRandomIntInclusive(0, toyNames.length - 1)],
     price: utilService.getRandomIntInclusive(1000, 9000),
     labels: labels[utilService.getRandomIntInclusive(0, labels.length)],
     createdAt: Date.now(),
@@ -96,4 +97,8 @@ function _createToy() {
   const toy = getEmptyToy()
   toy._id = utilService.makeId()
   return toy
+}
+
+function getDefaultFilter() {
+  return { txt: "", maxPrice: "", minSpeed: "" }
 }

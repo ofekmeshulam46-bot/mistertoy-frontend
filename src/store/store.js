@@ -1,3 +1,4 @@
+import { toyService } from "../services/toy.service.js"
 import { userService } from "../services/user.service.js"
 
 import { createStore } from "redux"
@@ -9,6 +10,7 @@ export const SET_TOYS = "SET_TOYS"
 export const REMOVE_TOY = "REMOVE_TOY"
 export const ADD_TOY = "ADD_TOY"
 export const EDIT_TOY = "EDIT_TOY"
+export const SET_FILTER_BY = "SET_FILTER_BY"
 
 export const SET_USER = "SET_USER"
 export const SET_USER_SCORE = "SET_USER_SCORE"
@@ -17,6 +19,7 @@ const initialState = {
   count: 106,
   toys: [],
   loggedinUser: userService.getLoggedinUser(),
+  filterBy: toyService.getDefaultFilter(),
 }
 
 export function appReducer(state = initialState, cmd = {}) {
@@ -45,6 +48,13 @@ export function appReducer(state = initialState, cmd = {}) {
         toys: state.toys.map((toy) =>
           toy._id === cmd.toy._id ? cmd.toy : toy,
         ),
+      }
+
+    case SET_FILTER_BY:
+     
+      return {
+        ...state,
+        filterBy: { ...state.filterBy, ...cmd.filterBy },
       }
 
     case SET_USER:

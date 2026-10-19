@@ -1,5 +1,4 @@
 export function ToyPreview({ toy }) {
-  console.log(toy)
 
   return (
     <article className="toy-preview">
