@@ -8,7 +8,7 @@ export function ToyPreview({ toy }) {
         Price: <span>${toy.price.toLocaleString()}</span>
       </p>
       <p>
-        inStock: <span>{toy.inStock}</span>
+        inStock: <span>{JSON.stringify(toy.inStock)}</span>
       </p>
     </article>
   )
