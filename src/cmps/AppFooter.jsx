@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 export function AppFooter() {
     
     const count = useSelector(storeState => storeState.count)
-    const carCount = useSelector(storeState => storeState.cars.length)
+    const toyCount = useSelector(storeState => storeState.toys.length)
     const dispatch = useDispatch()
 
     return <footer className="app-footer">

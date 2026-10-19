@@ -10,7 +10,7 @@ import { UserMsg } from "./cmps/UserMsg.jsx"
 
 import { HomePage } from "./pages/HomePage.jsx"
 import { AboutUs } from "./pages/AboutUs.jsx"
-import { CarIndex } from "./pages/CarIndex.jsx"
+import { ToyIndex } from "./pages/ToyIndex.jsx"
 export default function App() {
   return (
     <Provider store={store}>
@@ -21,7 +21,7 @@ export default function App() {
             <Routes>
               <Route element={<HomePage />} path="/" />
               <Route element={<AboutUs />} path="/about" />
-              <Route element={<CarIndex />} path="/car" />
+              <Route element={<ToyIndex />} path="/toy" />
             </Routes>
           </main>
           <AppFooter />

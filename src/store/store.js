@@ -5,17 +5,17 @@ import { createStore } from "redux"
 export const INCREMENT = "INCREMENT"
 export const INCREMENT_BY = "INCREMENT_BY"
 
-export const SET_CARS = "SET_CARS"
-export const REMOVE_CAR = "REMOVE_CAR"
-export const ADD_CAR = "ADD_CAR"
-export const EDIT_CAR = "EDIT_CAR"
+export const SET_TOYS = "SET_TOYS"
+export const REMOVE_TOY = "REMOVE_TOY"
+export const ADD_TOY = "ADD_TOY"
+export const EDIT_TOY = "EDIT_TOY"
 
 export const SET_USER = "SET_USER"
 export const SET_USER_SCORE = "SET_USER_SCORE"
 
 const initialState = {
   count: 106,
-  cars: [],
+  toys: [],
   loggedinUser: userService.getLoggedinUser(),
 }
 
@@ -27,23 +27,23 @@ export function appReducer(state = initialState, cmd = {}) {
     case INCREMENT_BY:
       return { ...state, count: state.count + cmd.by }
 
-    case SET_CARS:
-      return { ...state, cars: cmd.cars }
+    case SET_TOYS:
+      return { ...state, toys: cmd.toys }
 
-    case REMOVE_CAR:
+    case REMOVE_TOY:
       return {
         ...state,
-        cars: state.cars.filter((car) => car._id !== cmd.carId),
+        toys: state.toys.filter((toy) => toy._id !== cmd.toyId),
       }
 
-    case ADD_CAR:
-      return { ...state, cars: [...state.cars, cmd.car] }
+    case ADD_TOY:
+      return { ...state, toys: [...state.toys, cmd.toy] }
 
-    case EDIT_CAR:
+    case EDIT_TOY:
       return {
         ...state,
-        cars: state.cars.map((car) =>
-          car._id === cmd.car._id ? cmd.car : car,
+        toys: state.toys.map((toy) =>
+          toy._id === cmd.toy._id ? cmd.toy : toy,
         ),
       }
 
