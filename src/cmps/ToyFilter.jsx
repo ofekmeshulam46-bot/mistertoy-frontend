@@ -23,7 +23,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
   function onSubmitFilter(ev) {
     ev.preventDefault()
     onSetFilter(filterByToEdit)
-    
   }
 
   console.log(filterByToEdit)
@@ -48,16 +47,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
           name="maxPrice"
           placeholder="By max price"
           value={filterByToEdit.maxPrice || ""}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="minSpeed">Min Speed:</label>
-        <input
-          type="number"
-          id="minSpeed"
-          name="minSpeed"
-          placeholder="By min speed"
-          value={filterByToEdit.minSpeed || ""}
           onChange={handleChange}
         />
       </form>

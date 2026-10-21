@@ -19,7 +19,13 @@ export function ToyIndex() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    loadToys()
+    const regExp = new RegExp(filterBy.txt, "i")
+    loadToys(filterBy)
+    // return toys.filter(toy =>
+    //       {
+    //           return regExp.test(toy.vendor) &&
+    //           toy.price <= filterBy.maxPrice
+    //       }
     // console.log(toys)
   }, [filterBy])
 

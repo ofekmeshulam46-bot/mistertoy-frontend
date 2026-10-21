@@ -1,9 +1,17 @@
-import { ADD_TOY, EDIT_TOY, REMOVE_TOY, SET_TOYS,SET_FILTER_BY, store } from "../store.js"
+import {
+  ADD_TOY,
+  EDIT_TOY,
+  REMOVE_TOY,
+  SET_TOYS,
+  SET_FILTER_BY,
+  store,
+} from "../store.js"
 import { toyService } from "../../services/toy.service.js"
 
-export function loadToys() {
+export function loadToys(filterBy) {
+  const regExp = new RegExp(filterBy.txt, "i")
   return toyService
-    .query()
+    .query(filterBy)
     .then((toys) => store.dispatch({ type: SET_TOYS, toys }))
 }
 
@@ -23,6 +31,6 @@ export function saveToy(toy) {
 }
 
 export function setFilterBy(filterBy) {
-    // console.log(filterBy)
+  // console.log(filterBy)
   store.dispatch({ type: SET_FILTER_BY, filterBy })
 }

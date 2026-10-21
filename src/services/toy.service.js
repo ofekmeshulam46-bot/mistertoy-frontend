@@ -50,8 +50,17 @@ export const toyService = {
   getDefaultFilter,
 }
 
-function query() {
-  return storageService.query(STORAGE_KEY)
+function query(filterBy = {}) {
+  return storageService.query(STORAGE_KEY).then((toys) => {
+    if (filterBy.txt) {
+      const regExp = new RegExp(filterBy.txt, "i")
+      toys = toys.filter((toy) => regExp.test(toy.name))
+    }
+    if (filterBy.maxPrice) {
+      toys = toys.filter((toy) => toy.price <= +filterBy.maxPrice)
+    }
+    return toys
+  })
 }
 
 function getById(toyId) {
@@ -100,5 +109,5 @@ function _createToy() {
 }
 
 function getDefaultFilter() {
-  return { txt: "", maxPrice: "", minSpeed: "" }
+  return { txt: "", maxPrice: "" }
 }
