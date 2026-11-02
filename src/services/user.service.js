@@ -16,6 +16,17 @@ export const userService = {
 
 window.us = userService
 
+//doesnt work
+// async function login({ username, password }) {
+//     return { await storageService.query(STORAGE_KEY)
+      
+//             const user = users.find(user => user.username === username)
+//             if (user) return _setLoggedinUser(user)
+//             else return Promise.reject('Invalid login')
+// }
+// }
+
+
 function login({ username, password }) {
     return storageService.query(STORAGE_KEY)
         .then(users => {
@@ -36,6 +47,12 @@ function signup({ username, password, fullname }) {
         .then(_setLoggedinUser)
         // .then((data) => _setLoggedinUser(data)) same same
 }
+// function signup({ username, password, fullname }) {
+//     const user = { username, password, fullname, score: 10000 }
+//     return storageService.post(STORAGE_KEY, user)
+//         .then(_setLoggedinUser)
+//         // .then((data) => _setLoggedinUser(data)) same same
+// }
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN))

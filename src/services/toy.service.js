@@ -49,6 +49,18 @@ export const toyService = {
   getEmptyToy,
   getDefaultFilter,
 }
+// doesn't work
+// async function query(filterBy = {}) {
+//   return { await storageService.query(STORAGE_KEY)
+//   if (filterBy.txt) {
+//     const regExp = new RegExp(filterBy.txt, "i")
+//     toys = toys.filter((toy) => regExp.test(toy.name))
+//   }
+//   if (filterBy.maxPrice) {
+//     toys = toys.filter((toy) => toy.price <= +filterBy.maxPrice)
+//   }  return toys
+// }
+// }
 
 function query(filterBy = {}) {
   return storageService.query(STORAGE_KEY).then((toys) => {
