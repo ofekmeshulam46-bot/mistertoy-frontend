@@ -8,26 +8,39 @@ import {
 } from "../store.js"
 import { toyService } from "../../services/toy.service.js"
 
-export function loadToys(filterBy) {
+export async function loadToys(filterBy) {
   const regExp = new RegExp(filterBy.txt, "i")
-  return toyService
-    .query(filterBy)
-    .then((toys) => store.dispatch({ type: SET_TOYS, toys }))
+  try {
+    const toys = await toyService.query(filterBy)
+
+    return store.dispatch({ type: SET_TOYS, toys })
+  } catch (err) {
+    console.log(err)
+    showErrorMsg("cannt load toys")
+    throw err
+  }
 }
 
-export function removeToy(toyId) {
-  return toyService
-    .remove(toyId)
-    .then(() => store.dispatch({ type: REMOVE_TOY, toyId }))
+export async function removeToy(toyId) {
+  try {
+    await toyService.remove(toyId)
+    return store.dispatch({ type: REMOVE_TOY, toyId })
+  } catch (err) {
+    console.log("removing toy failed", err)
+    showErrorMsg("removing toy failed")
+  }
 }
 
-export function saveToy(toy) {
+export async function saveToy(toy) {
   const type = toy._id ? EDIT_TOY : ADD_TOY
-
-  return toyService.save(toy).then((savedToy) => {
+  try {
+    const savedToy = await toyService.save(toy)
     store.dispatch({ type, toy: savedToy })
     return savedToy
-  })
+  } catch (err) {
+    console.log("saving toy failed", err)
+    showErrorMsg("saving toy failed")
+  }
 }
 
 export function setFilterBy(filterBy) {

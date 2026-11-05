@@ -18,16 +18,6 @@ export function LoginSignup() {
     setCredentials(updatedCredentials)
   }
 
-  // function onSubmit(ev) {
-  //   ev.preventDefault()
-  //   const method = isSignupState ? signup : login
-
-  //   return method(credentials)
-  //     .then((user) => {
-  //       showSuccessMsg(`Welcome ${user.fullname}`)
-  //     })
-  //     .catch((err) => showErrorMsg("OOps try again"))
-  // }
 
   async function onSubmit(ev) {
     ev.preventDefault()

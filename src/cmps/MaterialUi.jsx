@@ -45,6 +45,7 @@ export default function MultipleSelect() {
   const [personName, setPersonName] = React.useState([])
 
   const handleChange = (event) => {
+    console.log(event)
     const {
       target: { value },
     } = event

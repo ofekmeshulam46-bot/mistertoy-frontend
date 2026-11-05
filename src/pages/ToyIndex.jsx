@@ -44,16 +44,7 @@ export function ToyIndex() {
     }
   }
 
-  //  function onRemoveToy(toyId) {
-  //   removeToy(toyId)
-  //     .then(() => {
-  //       showSuccessMsg("Toy removed")
-  //     })
-  //     .catch((err) => {
-  //       console.log("Cannot remove toy", err)
-  //       showErrorMsg("Cannot remove toy")
-  //     })
-  // }
+
 
   async function onAddToy() {
     const toyToSave = toyService.getEmptyToy()
@@ -66,18 +57,7 @@ export function ToyIndex() {
       showErrorMsg("Cannot add toy")
     }
   }
-  // function onAddToy() {
-  //   const toyToSave = toyService.getEmptyToy()
 
-  //   saveToy(toyToSave)
-  //     .then((savedToy) => {
-  //       showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-  //     })
-  //     .catch((err) => {
-  //       console.log("Cannot add toy", err)
-  //       showErrorMsg("Cannot add toy")
-  //     })
-  // }
 
   async function onEditToy(toy) {
     const price = +prompt("New price?")
@@ -90,20 +70,6 @@ export function ToyIndex() {
       showErrorMsg("Cannot update toy")
     }
   }
-
-  //  function onEditToy(toy) {
-  //   const price = +prompt("New price?")
-  //   const toyToSave = { ...toy, price }
-
-  //   saveToy(toyToSave)
-  //     .then((savedToy) => {
-  //       showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-  //     })
-  //     .catch((err) => {
-  //       console.log("Cannot update toy", err)
-  //       showErrorMsg("Cannot update toy")
-  //     })
-  // }
 
   return (
     <section className="toy-index">

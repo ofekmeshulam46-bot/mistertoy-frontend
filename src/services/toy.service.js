@@ -49,31 +49,26 @@ export const toyService = {
   getEmptyToy,
   getDefaultFilter,
 }
-// doesn't work
-// async function query(filterBy = {}) {
-//   return { await storageService.query(STORAGE_KEY)
-//   if (filterBy.txt) {
-//     const regExp = new RegExp(filterBy.txt, "i")
-//     toys = toys.filter((toy) => regExp.test(toy.name))
-//   }
-//   if (filterBy.maxPrice) {
-//     toys = toys.filter((toy) => toy.price <= +filterBy.maxPrice)
-//   }  return toys
-// }
-// }
 
-function query(filterBy = {}) {
-  return storageService.query(STORAGE_KEY).then((toys) => {
+async function query(filterBy = {}) {
+  try{
+    let toys =  await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
       const regExp = new RegExp(filterBy.txt, "i")
       toys = toys.filter((toy) => regExp.test(toy.name))
     }
     if (filterBy.maxPrice) {
       toys = toys.filter((toy) => toy.price <= +filterBy.maxPrice)
-    }
+    } 
     return toys
-  })
+  } catch(err){
+    console.log(err)
+    showErrorMsg("query error")
+     throw err
+  }
+
 }
+
 
 function getById(toyId) {
   return storageService.get(STORAGE_KEY, toyId)
@@ -87,7 +82,7 @@ function save(toy) {
   if (toy._id) {
     return storageService.put(STORAGE_KEY, toy)
   } else {
-    // when switching to backend - remove the next line
+    // when switching to backend - remove the next line     <????
     toy.owner = userService.getLoggedinUser()
     return storageService.post(STORAGE_KEY, toy)
   }
@@ -97,7 +92,7 @@ function getEmptyToy() {
   return {
     name: toyNames[utilService.getRandomIntInclusive(0, toyNames.length - 1)],
     price: utilService.getRandomIntInclusive(1000, 9000),
-    labels: labels[utilService.getRandomIntInclusive(0, labels.length)],
+    labels: labels[utilService.getRandomIntInclusive(0, labels.length-1)],
     createdAt: Date.now(),
     inStock: true,
   }

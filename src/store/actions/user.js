@@ -1,32 +1,46 @@
-import { userService } from '../../services/user.service.js'
-import {  SET_USER, SET_USER_SCORE, store } from '../store.js'
+import { userService } from "../../services/user.service.js"
+import { SET_USER, SET_USER_SCORE, store } from "../store.js"
 
-export function login(credentials) {
-	return userService.login(credentials)
-        .then(loggedinUser => {
-            store.dispatch({ type: SET_USER, loggedinUser })
-            return loggedinUser
-        })
+export async function login(credentials) {
+  try {
+    const loggedinUser = await userService.login(credentials)
+    store.dispatch({ type: SET_USER, loggedinUser })
+    return loggedinUser
+  } catch (err) {
+    console.log("login failed", err)
+    showErrorMsg("login failed")
+  }
 }
 
-export function signup(credentials) {
-	return userService.signup(credentials)
-        .then(loggedinUser => {
-            store.dispatch({ type: SET_USER, loggedinUser })
-            return loggedinUser
-        })
+export async function signup(credentials) {
+  try {
+    const loggedinUser = await userService.signup(credentials)
+    store.dispatch({ type: SET_USER, loggedinUser })
+    return loggedinUser
+  } catch (err) {
+    console.log("signup failed", err)
+    showErrorMsg("signup failed")
+  }
 }
 
-export function logout() {
-	return userService.logout()
-        .then(() => {
-            store.dispatch({ type: SET_USER, loggedinUser: null })
-        })
+export async function logout() {
+  try {
+    await userService.logout()
+    store.dispatch({ type: SET_USER, loggedinUser: null })
+  } catch (err) {
+    console.log("logout failed", err)
+    showErrorMsg("logout failed")
+  }
+  //return?
 }
 
-export function checkout(amount) {
-    return userService.updateScore(-amount)
-        .then(updatedScore => {
-            store.dispatch({ type: SET_USER_SCORE, score: updatedScore })
-        })
+export async function checkout(amount) {
+  try {
+    const updatedScore = await userService.updateScore(-amount)
+    store.dispatch({ type: SET_USER_SCORE, score: updatedScore })
+  } catch (err) {
+    console.log("checkout fail", err)
+    showErrorMsg("checkout fail")
+  }
+  //return?
 }
