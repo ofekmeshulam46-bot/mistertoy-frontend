@@ -37,6 +37,13 @@ export function ToyFilter({ filterBy, onSetFilter }) {
           value={filterByToEdit.txt}
           onChange={handleChange}
         />
+        <label for="cars">In Stock:</label>
+        <select name="toys" id="toys">
+          <option value="All">All</option>
+          <option value="In Stock">In Stock</option>
+          <option value="Not In Stock">Not In Stock</option>
+        </select>
+
         <MultipleSelect />
 
         {/* <label htmlFor="maxPrice">Max price:</label>
